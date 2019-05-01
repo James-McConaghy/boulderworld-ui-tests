@@ -13,7 +13,6 @@ public class SpecHelper extends AppiumHelper {
     }
 
     @BeforeSpec
-
     public void setup() {
         driver = appiumFactory.connect();
     }
