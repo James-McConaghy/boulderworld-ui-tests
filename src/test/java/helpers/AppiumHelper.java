@@ -4,13 +4,13 @@ import helpers.models.Locator;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AppiumHelper {
 
     protected static AppiumDriver driver;
-    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private static Logger log = LogManager.getLogger(AppiumHelper.class);
 
     public static WebElement locate(Locator locator, String... replacement){
         String replacedValue = locator.getValue();

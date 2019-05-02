@@ -10,6 +10,7 @@ public class SpecHelper extends AppiumHelper {
     public void initialize() {
         appiumFactory = AppiumFactory.getInstance();
         appiumFactory.createAppiumProcess();
+        appiumFactory.bootAndroidDevice();
     }
 
     @BeforeSpec
@@ -22,22 +23,29 @@ public class SpecHelper extends AppiumHelper {
     public void resetApp() {
         if(System.getenv("device_platform").equals("Android")){
             //reset
+            uninstall();
+            install();
         }
     }
 
     @AfterScenario
     public void afterScenario() {
-        driver.closeApp();
+        if (driver!= null) {
+            driver.closeApp();
+        }
     }
 
     @AfterSpec
     public void teardown() {
-        driver.quit();
+        if (driver!= null) {
+            driver.quit();
+        }
     }
 
     @AfterSuite
     public void afterSuite() {
         appiumFactory.killAppiumProcess();
+        appiumFactory.killDeviceProcess();
     }
 
 }
