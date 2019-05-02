@@ -28,6 +28,15 @@ public class AppiumHelper {
         return driver.getScreenshotAs(OutputType.BYTES);
     }
 
+
+    public static void launchApp() {
+        driver.launchApp();
+    }
+
+    public static void closeApp() {
+        driver.closeApp();
+    }
+
     public void install() {
         log.info("Installing App");
         log.info(System.getenv(System.getenv("device_platform")+"_app_location"));

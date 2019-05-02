@@ -22,14 +22,14 @@ public class AppiumFactory {
     private AppiumDriverLocalService service;
     private Process deviceProcess;
 
-    public static AppiumFactory getInstance() {
+    static AppiumFactory getInstance() {
         if(instance == null) {
             instance = new AppiumFactory();
         }
         return instance;
     }
 
-    public AppiumDriver connect() {
+    AppiumDriver connect() {
         try {
             if (service != null && service.isRunning()) {
                 String appiumURL = "http://%s:%s/wd/hub";
@@ -73,10 +73,10 @@ public class AppiumFactory {
         return capabilities;
     }
 
-    public void bootAndroidDevice() {
+    void bootAndroidDevice() {
         log.info("Booting android device..");
-        String[] android = {System.getProperty("user.home") + "/Android/Sdk/emulator/emulator", "-avd", System.getenv(System.getenv("device_platform") + "_device_name")};
-        if(System.getenv(System.getenv("device_platform")+"_device_emulated").equals("true")) {
+        String[] android = {System.getProperty("user.home") + System.getenv("Android_emulator_path"), "-avd", System.getenv("Android_device_name")};
+        if(System.getenv("Android_device_emulated").equals("true")) {
             try {
                 deviceProcess = new ProcessBuilder(android).start();
                 sleep(25000);
@@ -87,7 +87,7 @@ public class AppiumFactory {
         }
     }
 
-    public void createAppiumProcess() {
+    void createAppiumProcess() {
         log.info("Starting appium..");
         try {
             AppiumServiceBuilder builder = new AppiumServiceBuilder();
@@ -103,13 +103,13 @@ public class AppiumFactory {
         }
     }
 
-    public void killAppiumProcess() {
+    void killAppiumProcess() {
         if (service != null && service.isRunning()) {
             service.stop();
         }
     }
 
-    public void killDeviceProcess() {
+    void killDeviceProcess() {
         if (deviceProcess != null) {
             deviceProcess.destroy();
         }
