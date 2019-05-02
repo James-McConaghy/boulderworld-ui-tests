@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
@@ -32,11 +31,6 @@ public class AppiumFactory {
     AppiumDriver connect() {
         try {
             if (service != null && service.isRunning()) {
-                String appiumURL = "http://%s:%s/wd/hub";
-                String appiumHost = System.getenv("appium_host");
-                String appiumPort = System.getenv("appium_port");
-                //AppiumDriver driver = new AppiumDriver(new URL(String.format(appiumURL, appiumHost, appiumPort)), getDesiredCapabilities());
-
                 AppiumDriver driver = new AppiumDriver(service, getDesiredCapabilities());
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
                 return driver;

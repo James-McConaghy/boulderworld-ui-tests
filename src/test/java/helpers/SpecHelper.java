@@ -22,7 +22,6 @@ public class SpecHelper extends AppiumHelper {
     @BeforeScenario
     public void resetApp() {
         if(System.getenv("device_platform").equals("Android")){
-            //reset
             uninstall();
             install();
         }
