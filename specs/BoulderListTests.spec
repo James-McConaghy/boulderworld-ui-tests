@@ -9,18 +9,40 @@ To execute this specification, run
 
 * App: Launch
 
-## Test 1
-tags: Sanity
+## App ready
+---------------
+tags: Smoke
 
     * Boulder List: Ready?
     
     
-## Test 2
-tags: Sanity
+## Applying a filter should update the list correctly
+---------------
+tags: Smoke
 
     * Boulder List: Ready?
-    * Boulder List: Tap on Boulder "Boulder 1"
+    * Boulder List: Apply a "V2" boulder grade filter
+    * Boulder List: Ensure only boulders with the applied boulder grade filters appear in the list
+
+## Applying multiple filters should update the list correctly
+---------------
+tags: Smoke
+
+    * Boulder List: Ready?
+    * Boulder List: Apply a "V2" boulder grade filter
+    * Boulder List: Apply a "V4" boulder grade filter
+    * Boulder List: Ensure only boulders with the applied boulder grade filters appear in the list
+
+
+//## Removing filters should update the list correctly each time a filter is removed
+//---------------
+//tags:Smoke
+
+    //* Boulder List: Ready?
+
+
+
 
 _____
 
-*App: Close
+* App: Close
