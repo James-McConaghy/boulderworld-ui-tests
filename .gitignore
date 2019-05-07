@@ -24,6 +24,8 @@ build
 .idea/libraries
 .idea/caches
 
+.gradle
+
 
 
 

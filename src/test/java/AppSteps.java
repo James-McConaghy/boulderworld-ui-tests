@@ -7,6 +7,7 @@ public class AppSteps {
     @Step("App: Launch")
     public void launch() {
         launchApp();
+
     }
 
     @Step("App: Close")

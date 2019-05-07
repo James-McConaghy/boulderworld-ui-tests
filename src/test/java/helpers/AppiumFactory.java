@@ -73,7 +73,7 @@ public class AppiumFactory {
         if(System.getenv("Android_device_emulated").equals("true")) {
             try {
                 deviceProcess = new ProcessBuilder(android).start();
-                sleep(25000);
+                sleep(30000);
             } catch (Exception e) {
                 log.fatal("Ensure android device emulator exists and path is correct case sensitive, `emulator -list-avds`");
                 log.error(e.toString());
@@ -88,7 +88,7 @@ public class AppiumFactory {
             builder.withIPAddress(System.getenv("appium_host"));
             builder.usingPort(Integer.valueOf(System.getenv("appium_port")));
             builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-            builder.withArgument(GeneralServerFlag.LOG_LEVEL,"debug");
+            builder.withArgument(GeneralServerFlag.LOG_LEVEL,"info");
             service = AppiumDriverLocalService.buildService(builder);
             service.start();
         } catch (Exception e) {

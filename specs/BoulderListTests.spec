@@ -20,3 +20,7 @@ tags: Sanity
 
     * Boulder List: Ready?
     * Boulder List: Tap on Boulder "Boulder 1"
+
+_____
+
+*App: Close
